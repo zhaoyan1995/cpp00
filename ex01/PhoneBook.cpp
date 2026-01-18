@@ -6,7 +6,7 @@
 /*   By: yanzhao <yanzhao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 16:26:18 by yanzhao           #+#    #+#             */
-/*   Updated: 2026/01/17 22:15:21 by yanzhao          ###   ########.fr       */
+/*   Updated: 2026/01/18 21:42:49 by yanzhao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@ bool    PhoneBook::addContact(void)
     }
     this->_contacts[this->_count % 8].set_info(input[0], input[1], input[2], input[3], input[4]);
     this->_count++;
-    if (this->_count > 8)
-        this->_count = 8;
     std::cout << GREEN << "Contact has been added successfully." << RESET << std::endl;
     return (true);
 }
@@ -126,17 +124,22 @@ void    PhoneBook::_printTableHeader(void)const
 bool    PhoneBook::searchContact(void)const
 {
     int index;
+    int array_size;
     std::string cmd;
 
     this->_printTableHeader();
-    for(index = 0; index < this->_count; index++)
+    if (this->_count > 8)
+        array_size = 8;
+    else
+        array_size = this->_count;
+    for(index = 0; index < array_size; index++)
         this->_contacts[index].display_summary(index);
     std::cout << CYAN << "Please enter an index number to show contact details." << RESET << std::endl;
     if (!std::getline(std::cin, cmd))
         return (false);
     if (cmd.length() != 1 || !std::isdigit(cmd[0]))
         std::cout << RED << "Invalid index" << RESET << std::endl;
-    else if ((cmd[0] >= '0' && cmd[0] < this->_count + '0'))
+    else if ((cmd[0] >= '0' && cmd[0] < array_size + '0'))
     {
         index = cmd[0] - '0';
         this->_contacts[index].display_details(); 
