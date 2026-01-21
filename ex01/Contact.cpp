@@ -6,7 +6,7 @@
 /*   By: yanzhao <yanzhao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 16:26:18 by yanzhao           #+#    #+#             */
-/*   Updated: 2026/01/15 23:34:48 by yanzhao          ###   ########.fr       */
+/*   Updated: 2026/01/20 14:23:57 by yanzhao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void    Contact::display_details(void)const
 {
     std::cout << "First name: " << this->_first_name << std::endl;
     std::cout << "Last name: " << this->_last_name << std::endl;
-    std::cout << "Nick name: " << this->_nick_name << std::endl;
+    std::cout << "Nickname: " << this->_nick_name << std::endl;
     std::cout << "Phone number: " << this->_phone_number << std::endl;
     std::cout << "Darkest secret: " << this->_darkest_secret << std::endl;
     return ;

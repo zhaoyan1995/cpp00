@@ -6,7 +6,7 @@
 /*   By: yanzhao <yanzhao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 16:26:18 by yanzhao           #+#    #+#             */
-/*   Updated: 2026/01/18 21:42:49 by yanzhao          ###   ########.fr       */
+/*   Updated: 2026/01/20 14:22:44 by yanzhao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ bool    PhoneBook::addContact(void)
     std::string prompt[5] = {
         "first name", 
         "last name", 
-        "nick name", 
+        "nickname", 
         "phone number", 
         "darkest secret"};
  
@@ -91,7 +91,7 @@ bool    PhoneBook::_isValideInput(std::string &input, std::string &prompt)const
     {
         if (isAllDigit(input) == false)
         {
-            std::cout << RED << "Error: your " << prompt <<
+            std::cerr << RED << "Error: your " << prompt <<
                 " should only be composed by digit character from '0' to '9'." << RESET << std::endl;
             return (false);
         }
@@ -100,7 +100,7 @@ bool    PhoneBook::_isValideInput(std::string &input, std::string &prompt)const
     }
     if (isAllWhiteSpace(input) == true)
     {
-        std::cout << RED << "Error: your " << prompt <<
+        std::cerr << RED << "Error: your " << prompt <<
             " can't be empty or only composed by space!" << RESET << std::endl; 
         return (false);
     }
@@ -138,13 +138,13 @@ bool    PhoneBook::searchContact(void)const
     if (!std::getline(std::cin, cmd))
         return (false);
     if (cmd.length() != 1 || !std::isdigit(cmd[0]))
-        std::cout << RED << "Invalid index" << RESET << std::endl;
+        std::cerr << RED << "Invalid index" << RESET << std::endl;
     else if ((cmd[0] >= '0' && cmd[0] < array_size + '0'))
     {
         index = cmd[0] - '0';
         this->_contacts[index].display_details(); 
     }
     else
-        std::cout << YELLOW << "The index number " << cmd[0] << " is out of range or empty." << RESET << std::endl;
+        std::cerr << YELLOW << "The index number " << cmd[0] << " is out of range or empty." << RESET << std::endl;
     return (true);
 }

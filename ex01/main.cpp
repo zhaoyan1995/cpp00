@@ -6,7 +6,7 @@
 /*   By: yanzhao <yanzhao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 16:26:18 by yanzhao           #+#    #+#             */
-/*   Updated: 2026/01/15 23:50:03 by yanzhao          ###   ########.fr       */
+/*   Updated: 2026/01/20 14:24:49 by yanzhao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	main(void)
 		else if (cmd == "EXIT")
 		    break ;
 		else
-		    std::cout << RED << "The input is an invalid command!" << RESET << std::endl;
+		    std::cerr << RED << "The input is an invalid command!" << RESET << std::endl;
 	}
 	std::cout << "Bye!" << std::endl;
 	return (0);
