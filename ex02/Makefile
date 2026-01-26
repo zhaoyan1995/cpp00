@@ -6,7 +6,7 @@
 #    By: yanzhao <yanzhao@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/17 21:06:47 by yanzhao           #+#    #+#              #
-#    Updated: 2026/01/20 14:14:11 by yanzhao          ###   ########.fr        #
+#    Updated: 2026/01/26 19:20:18 by yanzhao          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,17 +30,13 @@ CFLAGS= -Wall -Wextra -Werror -std=c++98
 
 DEPFLAGS=-MMD -MP
 
--include $(DEPS)
-
-all:init $(NAME)
-
-init:
-	@mkdir -p $(OBJS_PATH)
+all: $(NAME)
 
 $(NAME):$(OBJS)
 	$(CC) $(CFLAGS) $^ -o $@
 
-$(OBJS_PATH)%.o:%.cpp | init
+$(OBJS_PATH)%.o:%.cpp
+	@mkdir -p $(OBJS_PATH)
 	$(CC) $(CFLAGS) $(DEPFLAGS) -I$(HEADER_PATH) -c $< -o $@
 
 clean:
@@ -50,5 +46,7 @@ fclean:clean
 	rm -f $(NAME)
 
 re: fclean all
+
+-include $(DEPS)
 
 .PHONY: all clean fclean re
